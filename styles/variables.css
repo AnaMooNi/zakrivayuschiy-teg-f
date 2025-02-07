@@ -7,6 +7,9 @@
     --header_section-width: clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem);
     --header_section-hieght: clamp(20.438rem, 19.5359rem + 3.8490vw, 23rem);
     --card_section-width: clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem);
+    --background_color: #fff;
+    --border_color: #000;
+    --stroke_color: #fff;
 }
 
 

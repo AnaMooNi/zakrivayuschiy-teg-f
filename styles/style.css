@@ -13,6 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-color: var(--background_color);
   font-family: var(--main-font), sans-serif;
   font-variation-settings: "wdth" var(--regular-weight), "wght" 100 'opsz' 0;
 }
@@ -21,7 +22,7 @@
   margin: 0 auto;
   width: var(--header_section-width);
   height: var(--header_section-hieght);
-  border: solid 2px #000;
+  border: solid 2px var(--border_color);
 }
 
 .header {
@@ -53,11 +54,11 @@
 
 .card_section {
   max-inline-size: var( --card_section-width);
-  border: solid 2px #000 ;
+  border: solid 2px var(--border_color) ;
 }
 
 .card {
-  background-color: #fff;
+  background-color: var(--background_color);
 }
 
 .card_header {
@@ -65,22 +66,58 @@
   margin: 5px 10px;
 }
 
-.image {
+.card_image {
   display: block;
   overflow: hidden;
   position: relative;
-  object-position: center;
-  object-fit: cover;
   max-width: 696px;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-top: 2px solid var(--border_color);
+  border-bottom: 2px solid var(--border_color);
 }
+
+.image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--background_color);
+}
+
+.decoration {
+  position: absolute;
+  z-index: 1;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  mix-blend-mode: hard-light;
+  top: 27px;
+  right: 25px;
+  opacity: 0.5;
+  text-shadow: 
+  1px 0  var(--stroke_color),
+  0 1px  var(--stroke_color),
+  -1px 0  var(--stroke_color),
+  0 -1px  var(--stroke_color);      
+}
+
+/*По моему мнение это делает тольок хуже, текст не видно
+
+@supports ((text-stroke: 1px var(--stroke_color)) or (-webkit-text-stroke: 1px var(--stroke_color))) {
+  .decoration {
+  -webkit-text-stroke: 1px var(--stroke_color);
+  text-stroke: 1px var(--stroke_color);
+  text-shadow: none;
+  }
+}
+
+*/
 
 .card_description_section {
   display: flex;
   flex-direction: column;
   padding: 25px;
   gap: 25px;
+  margin-bottom: -2px;
 }
 
 .card_text {
@@ -88,46 +125,110 @@
   line-height: 21px;
 }
 
+.button {
+  background-color: transparent;
+  border: solid 2px var(--border_color);
+  cursor: pointer;
+}
+
 .button_panel {
   display: flex;
   margin-left: auto;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .card__icon-button {
-  background-color: transparent;
   border: none;
 }
 
 .card__like-button {
   inline-size: 130px;
   justify-content: center;
-  padding: 9px;
+  padding: 10px;
   line-height: 90%;
-  background-color: transparent;
-  border: solid 2px #000;
 }
 
 .button__text {
   font-family: var(--accent-font);
   font-size: 14px;
+  line-height: 9px;
 }
 
+.footer {
+  display: block;
+}
 
+.footer_button {
+  display: flex;
+  align-items: center;
+  margin: 50px auto;
+  padding: 15px 20px;
+  gap: 8px;
+}
 
+.floppy {
+  width: 21px;
+  height: 21px;
+  position: relative;
+  inline-size: auto;
+}
 
+.dialog {
+  position: fixed;
+  width: clamp(21.313rem, 20.9609rem + 1.5023vw, 22.313rem);
+  padding: 30px;
+  background-color: var(--background_color);
+  border: solid 2px var(--border_color);
+}
 
+.dialog[open] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
 
+.dialog::backdrop {
+  background-color: #0008;
+}
 
+.dialog_button {
+  width: 100%;
+  font-family: var(--accent-font);
+  justify-content: center;
+  padding: 9px 17px;
+  gap: 20px;
+}
 
-
-
-
-
-
-
+.dialog_text {
+  max-width: 234px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  padding-right: 10px;
+  flex: 1;
+  text-transform: uppercase;
+  text-stroke: 1px #000;
+  -webkit-text-stroke: 1px #000;
+}
 
 
 @media (width <= 375px) {
 
+  .header {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .footer_button {
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .floppy {
+    width: 28px;
+    height: 28px;
+  }
 }

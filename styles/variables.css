@@ -9,7 +9,18 @@
     --card_section-width: clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem);
     --background_color: #fff;
     --border_color: #000;
+    --shadow_color: #000;
+    --button_text-color: #fff;
+    --mix_color: #fff;
     --stroke_color: #fff;
+    --background-image: 
+    repeating-linear-gradient(to right, #d3d3d3, transparent 2px),
+    repeating-linear-gradient(to bottom, #d3d3d3, transparent 2px),
+    linear-gradient(to bottom, #e7e7e7, #e7e7e7 0.01%, #1a1a1a);
+    object-fit: cover;
+    --contour_color: #000;
+    --red_color: #ff0000;
 }
+
 
 

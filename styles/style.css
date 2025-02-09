@@ -10,9 +10,45 @@
 
 */
 
+.filter-1 {
+  filter: contrast(150%);
+}
+
+.filter-2 {
+  filter: brightness(130%);
+}
+
+.filter-3 {
+  filter: saturate(160%);
+}
+
+.filter-4 {
+  filter: blur(3px);
+  animation: blur 1.71s infinite;
+}
+
+.filter-5 {
+  filter: brightness(70%) contrast(120%);
+  animation: brightness 2.05s infinite;
+}
+
+.filter-6 {
+  filter: grayscale(100%);
+}
+
+.filter-7 {
+  filter: invert(100%);
+}
+
+.filter-8 {
+  filter: saturate(200%);
+}
+
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-image: var(--background-image);
   background-color: var(--background_color);
   font-family: var(--main-font), sans-serif;
   font-variation-settings: "wdth" var(--regular-weight), "wght" 100 'opsz' 0;
@@ -34,6 +70,7 @@
   font-family: var(--accent-font), fantasy;
   gap: 20px;
   text-transform: uppercase;
+  background-color: var(--background_color);
 }
 
 .header_title {
@@ -117,7 +154,7 @@
   flex-direction: column;
   padding: 25px;
   gap: 25px;
-  margin-bottom: -2px;
+ 
 }
 
 .card_text {
@@ -126,22 +163,61 @@
 }
 
 .button {
+  position: relative;
   background-color: transparent;
   border: solid 2px var(--border_color);
   cursor: pointer;
 }
 
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--shadow_color);
+  transition: 0.3s ease;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--shadow_color);
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
 .button_panel {
   display: flex;
-  margin-left: auto;
-  align-items: flex-end;
+  justify-content: end;
+  gap: 5px;
 }
 
 .card__icon-button {
-  border: none;
+  display: flex;
+  padding: 0;
+  border: 2px solid transparent;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--border_color);
 }
 
 .card__like-button {
+  position: relative;
   inline-size: 130px;
   justify-content: center;
   padding: 10px;
@@ -149,6 +225,10 @@
 }
 
 .button__text {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+  color: var(--mix_color);
   font-family: var(--accent-font);
   font-size: 14px;
   line-height: 9px;
@@ -164,13 +244,22 @@
   margin: 50px auto;
   padding: 15px 20px;
   gap: 8px;
+  background-color: var(--background_color);
 }
 
 .floppy {
   width: 21px;
   height: 21px;
   position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+  fill: var(--mix_color);
   inline-size: auto;
+}
+
+.floppy_dialog {
+  width: 39px;
+  height: 39px;
 }
 
 .dialog {
@@ -204,13 +293,15 @@
   max-width: 234px;
   margin-bottom: 10px;
   line-height: 20px;
-  padding-right: 10px;
+  padding-right: 11px;
+  font-family: var(--accent-font);
+  font-size: 14px;
   flex: 1;
+  mix-blend-mode: none;
   text-transform: uppercase;
   text-stroke: 1px #000;
   -webkit-text-stroke: 1px #000;
 }
-
 
 @media (width <= 375px) {
 

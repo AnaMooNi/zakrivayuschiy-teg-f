@@ -10,37 +10,35 @@
 
 */
 
-.filter-1 {
+.filter-contrast {
   filter: contrast(150%);
 }
 
-.filter-2 {
+.filter-brightness {
   filter: brightness(130%);
 }
 
-.filter-3 {
+.filter-saterate {
   filter: saturate(160%);
 }
 
-.filter-4 {
+.filter-blur {
   filter: blur(3px);
-  animation: blur 1.71s infinite;
 }
 
-.filter-5 {
+.filter-double {
   filter: brightness(70%) contrast(120%);
-  animation: brightness 2.05s infinite;
 }
 
-.filter-6 {
+.filter-grayscale {
   filter: grayscale(100%);
 }
 
-.filter-7 {
+.filter-invert {
   filter: invert(100%);
 }
 
-.filter-8 {
+.filter-saterate_seconde {
   filter: saturate(200%);
 }
 
@@ -49,16 +47,16 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   background-image: var(--background-image);
-  background-color: var(--background_color);
+  background-color: var(--background-color);
+  background-attachment: fixed;
   font-family: var(--main-font), sans-serif;
-  font-variation-settings: "wdth" var(--regular-weight), "wght" 100 'opsz' 0;
+  font-variation-settings: "wght" var(--regular-weight), "wdth" 100 'opsz' 0;
 }
 
 .header_section {
   margin: 0 auto;
-  width: var(--header_section-width);
-  height: var(--header_section-hieght);
-  border: solid 2px var(--border_color);
+  width: var(--header-section-width);
+  border: solid 2px var(--border-color);
 }
 
 .header {
@@ -66,11 +64,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-block: clamp(7.5rem, 1.8943rem + 4.9844vw, 8rem);
   margin: 100px auto;
   font-family: var(--accent-font), fantasy;
   gap: 20px;
   text-transform: uppercase;
-  background-color: var(--background_color);
+  background-color: var(--background-color);
 }
 
 .header_title {
@@ -90,26 +89,27 @@
 
 
 .card_section {
-  max-inline-size: var( --card_section-width);
-  border: solid 2px var(--border_color) ;
+  max-inline-size: var(--card-section-width);
+  border: solid 2px var(--border-color) ;
 }
 
 .card {
-  background-color: var(--background_color);
+  background-color: var(--background-color);
 }
 
 .card_header {
   font-size: 18px;
-  margin: 5px 10px;
+  font-variation-settings: "wght" var(--bold-weight);
+  padding: 5px 10px;
 }
 
 .card_image {
   display: block;
   overflow: hidden;
   position: relative;
-  max-width: 696px;
-  border-top: 2px solid var(--border_color);
-  border-bottom: 2px solid var(--border_color);
+  max-inline-size: 696px;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .image {
@@ -118,55 +118,51 @@
   object-position: center;
   inline-size: 100%;
   aspect-ratio: 1 / 1;
-  background-color: var(--background_color);
+  background-color: var(--background-color);
 }
 
 .decoration {
   position: absolute;
   z-index: 1;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   mix-blend-mode: hard-light;
   top: 27px;
   right: 25px;
   opacity: 0.5;
   text-shadow: 
-  1px 0  var(--stroke_color),
-  0 1px  var(--stroke_color),
-  -1px 0  var(--stroke_color),
-  0 -1px  var(--stroke_color);      
+  1px 0  var(--stroke-color),
+  0 1px  var(--stroke-color),
+  -1px 0  var(--stroke-color),
+  0 -1px  var(--stroke-color);      
 }
 
-/*По моему мнение это делает тольок хуже, текст не видно
-
-@supports ((text-stroke: 1px var(--stroke_color)) or (-webkit-text-stroke: 1px var(--stroke_color))) {
+@supports ((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
   .decoration {
-  -webkit-text-stroke: 1px var(--stroke_color);
-  text-stroke: 1px var(--stroke_color);
+  -webkit-text-stroke: 1px var(--stroke-color);
+  text-stroke: 1px var(--stroke-color);
   text-shadow: none;
   }
 }
-
-*/
 
 .card_description_section {
   display: flex;
   flex-direction: column;
   padding: 25px;
   gap: 25px;
- 
 }
 
 .card_text {
   font-size: 18px;
-  line-height: 21px;
+  line-height: 0,21;
 }
 
 .button {
   position: relative;
   background-color: transparent;
-  border: solid 2px var(--border_color);
+  border: solid 2px var(--border-color);
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .button:focus {
@@ -174,15 +170,14 @@
 }
 
 .button:focus-visible {
-  box-shadow: 2px 2px 0 var(--shadow_color);
-  transition: 0.3s ease;
+  box-shadow: 2px 2px 0 var(--shadow-color);
 }
 
 .button::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: var(--shadow_color);
+  background-color: var(--shadow-color);
   transform: scaleX(0);
   transition: transform 0.5s ease-in-out;
   transform-origin: left;
@@ -213,7 +208,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: var(--border_color);
+  border-color: var(--border-color);
 }
 
 .card__like-button {
@@ -221,30 +216,30 @@
   inline-size: 130px;
   justify-content: center;
   padding: 10px;
-  line-height: 90%;
+  line-height: 0.9;
 }
 
 .button__text {
   position: relative;
   z-index: 1;
   mix-blend-mode: difference;
-  color: var(--mix_color);
-  font-family: var(--accent-font);
+  color: var(--mix-color);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
-  line-height: 9px;
 }
 
-.footer {
+.save {
   display: block;
 }
 
-.footer_button {
+.save_button {
   display: flex;
   align-items: center;
   margin: 50px auto;
   padding: 15px 20px;
   gap: 8px;
-  background-color: var(--background_color);
+  background-color: var(--background-color);
+  line-height: 0.9;
 }
 
 .floppy {
@@ -253,7 +248,7 @@
   position: relative;
   z-index: 1;
   mix-blend-mode: difference;
-  fill: var(--mix_color);
+  fill: var(--mix-color);
   inline-size: auto;
 }
 
@@ -266,8 +261,8 @@
   position: fixed;
   width: clamp(21.313rem, 20.9609rem + 1.5023vw, 22.313rem);
   padding: 30px;
-  background-color: var(--background_color);
-  border: solid 2px var(--border_color);
+  background-color: var(--background-color);
+  border: solid 2px var(--border-color);
 }
 
 .dialog[open] {
@@ -289,18 +284,19 @@
   gap: 20px;
 }
 
+.ok_button {
+  text-transform: uppercase;
+}
+
 .dialog_text {
-  max-width: 234px;
-  margin-bottom: 10px;
+  max-inline-size: 234px;
+  margin-block-end: 10px;
   line-height: 20px;
-  padding-right: 11px;
+  padding-inline-start: 11px;
   font-family: var(--accent-font);
   font-size: 14px;
   flex: 1;
-  mix-blend-mode: none;
   text-transform: uppercase;
-  text-stroke: 1px #000;
-  -webkit-text-stroke: 1px #000;
 }
 
 @media (width <= 375px) {
@@ -313,9 +309,8 @@
     width: 100%;
   }
 
-  .footer_button {
+  .save_button {
     flex-direction: column;
-    gap: 11px;
   }
 
   .floppy {
